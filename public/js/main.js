@@ -175,7 +175,7 @@ const initCatalogFilter = () => {
 };
 
 /* ============================================
-   CARD CAROUSELS (OPTIMIZADO)
+   CARD CAROUSELS
    ============================================ */
 const initCardCarousels = () => {
   const carousels = document.querySelectorAll('.card-carousel');
@@ -192,60 +192,39 @@ const initCardCarousels = () => {
 
     let current = 0;
     const total = slides.length;
-    let autoInterval = null;
-    let isVisible = false;
 
     const goTo = (index) => {
+      // wrap around
       current = ((index % total) + total) % total;
       track.style.transform = `translateX(-${current * 100}%)`;
 
+      // update dots
       dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === current);
       });
 
+      // update counter
       if (counter) {
         counter.textContent = `${current + 1} / ${total}`;
       }
     };
 
-    const startAuto = () => {
-      if (autoInterval) return;
-      autoInterval = setInterval(() => {
-        if (isVisible) goTo(current + 1);
-      }, 5000);
-    };
-
-    const stopAuto = () => {
-      clearInterval(autoInterval);
-      autoInterval = null;
-    };
-
-    // 👇 SOLO corre si está visible
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        isVisible = entry.isIntersecting;
-        if (isVisible) {
-          startAuto();
-        } else {
-          stopAuto();
-        }
-      });
-    }, { threshold: 0.3 });
-
-    observer.observe(carousel);
-
-    // botones
+    // Prevent card click when clicking nav buttons
     const stopProp = (e) => e.stopPropagation();
 
-    prevBtn?.addEventListener('click', (e) => {
-      stopProp(e);
-      goTo(current - 1);
-    });
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        stopProp(e);
+        goTo(current - 1);
+      });
+    }
 
-    nextBtn?.addEventListener('click', (e) => {
-      stopProp(e);
-      goTo(current + 1);
-    });
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        stopProp(e);
+        goTo(current + 1);
+      });
+    }
 
     dots.forEach((dot, i) => {
       dot.addEventListener('click', (e) => {
@@ -254,25 +233,29 @@ const initCardCarousels = () => {
       });
     });
 
-    // hover pausa
-    carousel.addEventListener('mouseenter', stopAuto);
-    carousel.addEventListener('mouseleave', () => {
-      if (isVisible) startAuto();
-    });
-
-    // swipe
+    // Touch/swipe support
     let touchStartX = 0;
+    let touchEndX = 0;
 
     carousel.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });
 
     carousel.addEventListener('touchend', (e) => {
-      const diff = touchStartX - e.changedTouches[0].screenX;
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
       if (Math.abs(diff) > 40) {
         goTo(diff > 0 ? current + 1 : current - 1);
       }
     }, { passive: true });
+
+    // Auto-advance (pause on hover)
+    let autoInterval = setInterval(() => goTo(current + 1), 4000);
+
+    carousel.addEventListener('mouseenter', () => clearInterval(autoInterval));
+    carousel.addEventListener('mouseleave', () => {
+      autoInterval = setInterval(() => goTo(current + 1), 4000);
+    });
   });
 };
 
