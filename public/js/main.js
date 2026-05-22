@@ -263,6 +263,17 @@ const initCardCarousels = () => {
    PRODUCT MODAL DATA
    ============================================ */
 const productData = {
+  'galpon-chapa-corrediza': {
+    tag: 'Galpón de Jardín',
+    title: 'Galpón de Chapa Corrediza',
+    imgModal: '/images/galponchapacorrediza.jpg',
+    icon: 'fa-warehouse',
+    measures: 'A Convenir',
+    desc: 'Galpón con paneles estructurales de chapa y puertas corredizas. Ideal para aprovechar tus espacios y darle estilo a tu deposito. Estructura de caño con pintura E-poxi, ideal para resistir la intemperie. Puedes personalizarlo agregandole ventanas, modificando sus medidas y materiales.',
+    materials: 'Estructura de caño con pintura E-poxi ideal para exteriores. Paneles estructurales de chapa. Puertas corredizas. Tornillería reforzada.',
+    uses: ['Depósito', 'Espacio de trabajo', 'Garage'],
+    colors: 'Negro, Gris, Cromado, A elección'
+  },
   'galpon-chapa': {
     tag: 'Galpón de Jardín',
     title: 'Galpon de Jardin de Chapa',
@@ -287,15 +298,14 @@ const productData = {
    'quincho-estructural': {
     tag: 'Quincho',
     title: 'Quincho Estructural',
-    imgModal: '/images/quinchoestructural.png', // ✅ CORREGIDO
+    imgModal: '/images/quinchoestructural.png',
     icon: 'fa-home',
     measures: '4,40 x 2,20 x 200 / A medida',
     desc: 'Quincho estructural con paneles estructurales. Interior en simil madera PVC y exterior en chapa negra/gris o color a elección. La chapa protege el interior de la intemperie dándole un estilo industrial. Modelo personalizable en medidas y materiales.',
     materials: 'Estructura de caño con pintura E-poxi ideal para exteriores. Paneles con cara interna en PVC simil madera y exterior en chapa negra. Piso de chapón reforzado, con posibilidad de integrar rampa.',
     uses: ['Quincho', 'Jardín', 'Espacio social', 'Depósito'],
     colors: 'Chapa negra, Chapa gris, Color a elección'
-  }
-,
+  },
   'galpon-abierto': {
     tag: 'Galpón Abierto',
     title: 'Galpón Abierto',
@@ -376,7 +386,9 @@ const initModal = () => {
       clone.style.display  = 'block';
       clone.style.width    = '100%';
       clone.style.height   = '100%';
-      clone.style.objectFit = 'cover';
+      clone.style.objectFit = 'contain';
+      clone.style.objectPosition = 'center';
+      clone.style.background = 'var(--bg-secondary)';
       wrap.appendChild(clone);
     } else {
       wrap.innerHTML = `

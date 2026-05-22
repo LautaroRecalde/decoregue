@@ -74,15 +74,6 @@
   </style>
 </head>
 <body>
-  <!-- Aquí va todo el contenido de tu página (navbar, hero, catálogo, contacto, etc.) -->
-
-
-
-  <!-- Resto de tu sitio (scripts, footer, etc.) -->
-</body>
-</html>
-
-<body>
 
 <!-- ============================================
      NAVBAR
@@ -137,7 +128,7 @@
   <div class="hero-bg"
        role="img"
        aria-label="Galpón de jardín personalizado fabricado por Decoregue en Bernal, Buenos Aires"
-       style="background-image:url('/images/galponpersonalizado.jpg');background-size:cover;background-position:center;background-repeat:no-repeat;">
+       style="background-image:url('/images/heronew.webp');">
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-grid" aria-hidden="true"></div>
@@ -171,7 +162,7 @@
       <div class="hero-stat-label">Años de experiencia</div>
     </div>
     <div class="hero-stat">
-      <div class="hero-stat-number" data-counter="8" data-suffix="">8</div>
+      <div class="hero-stat-number" data-counter="9" data-suffix="">9</div>
       <div class="hero-stat-label">Productos únicos</div>
     </div>
     <div class="hero-stat">
@@ -192,6 +183,7 @@
      ============================================ -->
 <div class="marquee-strip" aria-hidden="true">
   <div class="marquee-track">
+    <span class="marquee-item">Galpón de Chapa Corrediza <span class="marquee-dot"></span></span>
     <span class="marquee-item">Galpón de Chapa <span class="marquee-dot"></span></span>
     <span class="marquee-item">Galpón de Madera <span class="marquee-dot"></span></span>
     <span class="marquee-item">Quincho Estructural <span class="marquee-dot"></span></span>
@@ -203,6 +195,7 @@
     <span class="marquee-item">3 Cuotas Sin Interés <span class="marquee-dot"></span></span>
     <span class="marquee-item">Bernal, Buenos Aires <span class="marquee-dot"></span></span>
     <!-- Duplicado para loop continuo -->
+    <span class="marquee-item">Galpón de Chapa Corrediza <span class="marquee-dot"></span></span>
     <span class="marquee-item">Galpón de Chapa <span class="marquee-dot"></span></span>
     <span class="marquee-item">Galpón de Madera <span class="marquee-dot"></span></span>
     <span class="marquee-item">Quincho Estructural <span class="marquee-dot"></span></span>
@@ -333,10 +326,32 @@
 
     <div class="catalog-grid">
 
-      <!-- 1: Galpón Chapa — MÁS VENDIDO -->
-      <article class="product-card reveal" data-category="galpon" data-product="galpon-chapa">
+      <!-- 1: Galpón de Chapa Corrediza — NUEVO -->
+      <article class="product-card reveal" data-category="galpon" data-product="galpon-chapa-corrediza">
         <div class="product-card-image">
-          <!-- LCP: loading eager en el primer producto visible -->
+          <img src="/images/galponcorredizo.webp"
+               alt="Galpón de Chapa Corrediza — estructura de hierro E-poxi con puertas corredizas, Decoregue Bernal"
+               class="card-img"
+               width="600" height="400"
+               loading="eager" fetchpriority="high"
+               decoding="async" />
+          <img src="/images/galponcorredizo.webp" alt="Galpón de Chapa Corrediza — detalle interior"
+               class="prod-modal-img" style="display:none;" loading="lazy" />
+          <div class="product-card-overlay"></div>
+          <div class="product-badge-custom">Nuevo</div>
+        </div>
+        <div class="product-card-content">
+          <p class="product-tag">Galpón de Jardín</p>
+          <h3 class="product-card-title">Galpón de Chapa<br>Corrediza</h3>
+          <p class="product-card-measures"><i class="fas fa-ruler-combined me-1" aria-hidden="true"></i> A Convenir</p>
+          <p class="product-card-desc">Galpón con paneles estructurales de chapa y puertas corredizas. Ideal para aprovechar tus espacios y darle estilo a tu deposito.</p>
+          <span class="product-card-cta">Ver detalles <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+        </div>
+      </article>
+
+      <!-- 2: Galpón Chapa — MÁS VENDIDO -->
+      <article class="product-card reveal delay-1" data-category="galpon" data-product="galpon-chapa">
+        <div class="product-card-image">
           <img src="/images/galponchapa.png"
                alt="Galpón de Jardín de Chapa — estructura de hierro E-poxi con chapa galvanizada, Decoregue Bernal"
                class="card-img"
@@ -357,8 +372,8 @@
         </div>
       </article>
 
-      <!-- 2: Galpón Madera -->
-      <article class="product-card reveal delay-1" data-category="galpon" data-product="galpon-madera">
+      <!-- 3: Galpón Madera -->
+      <article class="product-card reveal delay-2" data-category="galpon" data-product="galpon-madera">
         <div class="product-card-image">
           <img src="/images/galponmadera.jpg"
                alt="Galpón de Jardín de Madera — madera machimbre Taeda con estructura de hierro, Decoregue"
@@ -377,8 +392,8 @@
         </div>
       </article>
 
-      <!-- 3: Quincho Estructural — NUEVO — carrusel 3 modelos -->
-      <article class="product-card reveal delay-2" data-category="galpon" data-product="quincho-estructural">
+      <!-- 4: Quincho Estructural — carrusel 3 modelos -->
+      <article class="product-card reveal" data-category="galpon" data-product="quincho-estructural">
         <div class="product-card-image">
           <div class="card-carousel" data-carousel="quincho-estructural">
             <div class="card-carousel-track">
@@ -413,7 +428,6 @@
           <img src="/images/quinchoestructural.png" alt="Quincho Estructural"
                class="prod-modal-img" style="display:none;" loading="lazy" />
           <div class="product-card-overlay"></div>
-          <div class="product-badge-custom">Nuevo</div>
         </div>
         <div class="product-card-content">
           <p class="product-tag">Quincho</p>
@@ -424,8 +438,8 @@
         </div>
       </article>
 
-      <!-- 4: Galpón Abierto — NUEVO — carrusel de colores -->
-      <article class="product-card reveal" data-category="galpon" data-product="galpon-abierto">
+      <!-- 5: Galpón Abierto — carrusel de colores -->
+      <article class="product-card reveal delay-1" data-category="galpon" data-product="galpon-abierto">
         <div class="product-card-image">
           <div class="card-carousel" data-carousel="galpon-abierto">
             <div class="card-carousel-track">
@@ -467,7 +481,6 @@
           <img src="/images/galponquincho.jpeg" alt="Galpón Abierto — detalle interior con paneles simil madera"
                class="prod-modal-img" style="display:none;" loading="lazy" />
           <div class="product-card-overlay"></div>
-          <div class="product-badge-custom">Nuevo</div>
         </div>
         <div class="product-card-content">
           <p class="product-tag">Galpón Abierto</p>
@@ -478,8 +491,8 @@
         </div>
       </article>
 
-      <!-- 5: Galpón Personalizado -->
-      <article class="product-card reveal delay-1" data-category="galpon" data-product="galpon-personalizado">
+      <!-- 6: Galpón Personalizado -->
+      <article class="product-card reveal delay-2" data-category="galpon" data-product="galpon-personalizado">
         <div class="product-card-image">
           <img src="/images/galponpersonalizado.jpg"
                alt="Galpón de Jardín Personalizado — diseño a medida en hierro, chapa y madera, Decoregue"
@@ -499,8 +512,8 @@
         </div>
       </article>
 
-      <!-- 6: Pérgola -->
-      <article class="product-card reveal delay-2" data-category="jardin" data-product="pergola">
+      <!-- 7: Pérgola -->
+      <article class="product-card reveal" data-category="jardin" data-product="pergola">
         <div class="product-card-image">
           <img src="/images/pergoladejardin.jpg"
                alt="Pérgola de Jardín — madera, hierro y chapa, fabricación artesanal Decoregue Bernal"
@@ -520,8 +533,8 @@
         </div>
       </article>
 
-      <!-- 7: Barra Móvil -->
-      <article class="product-card reveal" data-category="mueble" data-product="barra-movil">
+      <!-- 8: Barra Móvil -->
+      <article class="product-card reveal delay-1" data-category="mueble" data-product="barra-movil">
         <div class="product-card-image">
           <img src="/images/barramovil.jpg"
                alt="Barra Móvil en madera EUCA lacada e hierro E-poxi — ideal para jardines y asados, Decoregue"
@@ -540,8 +553,8 @@
         </div>
       </article>
 
-      <!-- 8: Mesa + Banquetas -->
-      <article class="product-card reveal delay-1" data-category="mueble" data-product="mesa-banquetas">
+      <!-- 9: Mesa + Banquetas -->
+      <article class="product-card reveal delay-2" data-category="mueble" data-product="mesa-banquetas">
         <div class="product-card-image">
           <img src="/images/mesaybanqueta.jpg"
                alt="Mesa Alta más 2 Banquetas en hierro y madera — kit completo para jardín, Decoregue Bernal"
@@ -867,6 +880,7 @@
               <label for="formProduct" class="form-label">Producto de interés *</label>
               <select id="formProduct" name="producto" class="form-control-metal" required>
                 <option value="" disabled selected>Seleccioná un producto</option>
+                <option value="Galpón de Chapa Corrediza">Galpón de Chapa Corrediza</option>
                 <option value="Galpón de Jardín de Chapa">Galpón de Jardín de Chapa</option>
                 <option value="Galpón de Jardín de Madera">Galpón de Jardín de Madera</option>
                 <option value="Quincho Estructural">Quincho Estructural</option>
@@ -935,6 +949,7 @@
       <div>
         <div class="footer-col-title">Productos</div>
         <ul class="footer-links" role="list">
+          <li><a href="#catalogo" class="footer-link">Galpón de Chapa Corrediza</a></li>
           <li><a href="#catalogo" class="footer-link">Galpón de Jardín de Chapa</a></li>
           <li><a href="#catalogo" class="footer-link">Galpón de Jardín de Madera</a></li>
           <li><a href="#catalogo" class="footer-link">Quincho Estructural</a></li>
