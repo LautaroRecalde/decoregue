@@ -64,6 +64,8 @@
   <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet" /></noscript>
 
   <link rel="stylesheet" href="css/main.css" />
+  <!-- Estilos del cotizador (formulario + carrito "Cotizar") — debe ir después de main.css -->
+  <link rel="stylesheet" href="css/cotizador.css" />
 
   <style>
     /* Tu CSS crítico inline se mantiene igual */
@@ -162,7 +164,7 @@
       <div class="hero-stat-label">Años de experiencia</div>
     </div>
     <div class="hero-stat">
-      <div class="hero-stat-number" data-counter="9" data-suffix="">9</div>
+      <div class="hero-stat-number" data-counter="10" data-suffix="">10</div>
       <div class="hero-stat-label">Productos únicos</div>
     </div>
     <div class="hero-stat">
@@ -186,6 +188,7 @@
     <span class="marquee-item">Galpón de Chapa Corrediza <span class="marquee-dot"></span></span>
     <span class="marquee-item">Galpón de Chapa <span class="marquee-dot"></span></span>
     <span class="marquee-item">Galpón de Madera <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Galpón con Interior de Madera <span class="marquee-dot"></span></span>
     <span class="marquee-item">Quincho Estructural <span class="marquee-dot"></span></span>
     <span class="marquee-item">Galpón Abierto <span class="marquee-dot"></span></span>
     <span class="marquee-item">Pergola a Medida <span class="marquee-dot"></span></span>
@@ -198,6 +201,7 @@
     <span class="marquee-item">Galpón de Chapa Corrediza <span class="marquee-dot"></span></span>
     <span class="marquee-item">Galpón de Chapa <span class="marquee-dot"></span></span>
     <span class="marquee-item">Galpón de Madera <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Galpón con Interior de Madera <span class="marquee-dot"></span></span>
     <span class="marquee-item">Quincho Estructural <span class="marquee-dot"></span></span>
     <span class="marquee-item">Galpón Abierto <span class="marquee-dot"></span></span>
     <span class="marquee-item">Pergola a Medida <span class="marquee-dot"></span></span>
@@ -312,7 +316,7 @@
       <div class="col-lg-6 reveal delay-2">
         <p class="section-subtitle">
           Todos nuestros productos son 100% personalizables en medidas,
-          materiales y acabados. Hacé clic en cada producto para ver los detalles.
+          materiales y acabados. Hacé clic en cada producto para ver los detalles y cotizar.
         </p>
       </div>
     </div>
@@ -343,21 +347,98 @@
         <div class="product-card-content">
           <p class="product-tag">Galpón de Jardín</p>
           <h3 class="product-card-title">Galpón de Chapa<br>Corrediza</h3>
-          <p class="product-card-measures"><i class="fas fa-ruler-combined me-1" aria-hidden="true"></i> A Convenir</p>
           <p class="product-card-desc">Galpón con paneles estructurales de chapa y puertas corredizas. Ideal para aprovechar tus espacios y darle estilo a tu deposito.</p>
           <span class="product-card-cta">Ver detalles <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
         </div>
       </article>
 
-      <!-- 2: Galpón Chapa — MÁS VENDIDO -->
+   <!-- 2: Galpón Chapa — MÁS VENDIDO — carrusel de 10 imágenes
+           Imágenes esperadas en /images/: galponchapa.png (la actual) y galponchapa2.jpg ... galponchapa10.jpg
+           Mientras no existan, se muestra un recuadro "Foto próximamente". -->
       <article class="product-card reveal delay-1" data-category="galpon" data-product="galpon-chapa">
         <div class="product-card-image">
-          <img src="/images/galponchapa.png"
-               alt="Galpón de Jardín de Chapa — estructura de hierro E-poxi con chapa galvanizada, Decoregue Bernal"
-               class="card-img"
-               width="600" height="400"
-               loading="eager" fetchpriority="low"
-               decoding="async" />
+          <div class="card-carousel" data-carousel="galpon-chapa">
+            <div class="card-carousel-track">
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
+                <img src="/images/galponchapa.png"
+                     alt="Galpón de Jardín de Chapa — imagen 1"
+                     width="600" height="400" loading="eager" fetchpriority="low" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
+                <img src="/images/galponchapa3.webp"
+                     alt="Galpón de Jardín de Chapa — imagen 2"
+                     width="600" height="400" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
+                <img src="/images/galponchapa4.webp"
+                     alt="Galpón de Jardín de Chapa — imagen 3"
+                     width="600" height="400" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
+                <img src="/images/galponchapa5.webp"
+                     alt="Galpón de Jardín de Chapa — imagen 4"
+                     width="600" height="400" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
+                <img src="/images/galponchapa6.webp"
+                     alt="Galpón de Jardín de Chapa — imagen 5"
+                     width="600" height="400" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
+                <img src="/images/galponchapa7.webp"
+                     alt="Galpón de Jardín de Chapa — imagen 6"
+                     width="600" height="400" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
+                <img src="/images/galponchapa8.webp"
+                     alt="Galpón de Jardín de Chapa — imagen 7"
+                     width="600" height="400" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
+                <img src="/images/galponchapa9.webp"
+                     alt="Galpón de Jardín de Chapa — imagen 8"
+                     width="600" height="400" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
+                <img src="/images/galponchapa10.webp"
+                     alt="Galpón de Jardín de Chapa — imagen 9"
+                     width="600" height="400" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+            </div>
+            <button class="carousel-nav prev" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-nav next" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
+            <div class="carousel-dots">
+              <button class="carousel-dot active" aria-label="Imagen 1"></button>
+              <button class="carousel-dot" aria-label="Imagen 2"></button>
+              <button class="carousel-dot" aria-label="Imagen 3"></button>
+              <button class="carousel-dot" aria-label="Imagen 4"></button>
+              <button class="carousel-dot" aria-label="Imagen 5"></button>
+              <button class="carousel-dot" aria-label="Imagen 6"></button>
+              <button class="carousel-dot" aria-label="Imagen 7"></button>
+              <button class="carousel-dot" aria-label="Imagen 8"></button>
+              <button class="carousel-dot" aria-label="Imagen 9"></button>
+              <button class="carousel-dot" aria-label="Imagen 10"></button>
+            </div>
+            <div class="carousel-counter">1 / 10</div>
+          </div>
           <img src="/images/galponchapa.png" alt="Galpón de Jardín de Chapa — detalle interior"
                class="prod-modal-img" style="display:none;" loading="lazy" />
           <div class="product-card-overlay"></div>
@@ -366,19 +447,65 @@
         <div class="product-card-content">
           <p class="product-tag">Galpón de Jardín</p>
           <h3 class="product-card-title">Galpon de Jardin<br>de Chapa</h3>
-          <p class="product-card-measures"><i class="fas fa-ruler-combined me-1" aria-hidden="true"></i> 2,20×1,10×1,85m / 1,10×1,10×1,85m</p>
           <p class="product-card-desc">Estructura de hierro E-poxi, chapa estructural, puerta con cerrojo. Fácil de armar y desmontar.</p>
           <span class="product-card-cta">Ver detalles <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
         </div>
       </article>
 
-      <!-- 3: Galpón Madera -->
+     <!-- 3: Galpón Madera — carrusel de 5 imágenes
+           Imágenes esperadas en /images/: galponmadera.jpg (la actual) y galponmadera2.jpg ... galponmadera5.jpg
+           Mientras no existan, se muestra un recuadro "Foto próximamente". -->
       <article class="product-card reveal delay-2" data-category="galpon" data-product="galpon-madera">
         <div class="product-card-image">
-          <img src="/images/galponmadera.jpg"
-               alt="Galpón de Jardín de Madera — madera machimbre Taeda con estructura de hierro, Decoregue"
-               class="card-img" width="600" height="400"
-               loading="lazy" decoding="async" />
+          <div class="card-carousel" data-carousel="galpon-madera">
+            <div class="card-carousel-track">
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
+                <img src="/images/galponmadera.jpg"
+                     alt="Galpón de Jardín de Madera — imagen 1"
+                     width="600" height="400" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
+                <img src="/images/galponmadera2.webp"
+                     alt="Galpón de Jardín de Madera — imagen 2"
+                     width="600" height="400" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
+                <img src="/images/galponmadera3.webp"
+                     alt="Galpón de Jardín de Madera — imagen 3"
+                     width="600" height="400" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
+                <img src="/images/galponmadera4.webp"
+                     alt="Galpón de Jardín de Madera — imagen 4"
+                     width="600" height="400" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
+                <img src="/images/galponmadera5.webp"
+                     alt="Galpón de Jardín de Madera — imagen 5"
+                     width="600" height="400" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+            </div>
+            <button class="carousel-nav prev" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-nav next" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
+            <div class="carousel-dots">
+              <button class="carousel-dot active" aria-label="Imagen 1"></button>
+              <button class="carousel-dot" aria-label="Imagen 2"></button>
+              <button class="carousel-dot" aria-label="Imagen 3"></button>
+              <button class="carousel-dot" aria-label="Imagen 4"></button>
+              <button class="carousel-dot" aria-label="Imagen 5"></button>
+            </div>
+            <div class="carousel-counter">1 / 5</div>
+          </div>
           <img src="/images/galponmadera.jpg" alt="Galpón de Jardín de Madera — detalle"
                class="prod-modal-img" style="display:none;" loading="lazy" />
           <div class="product-card-overlay"></div>
@@ -386,14 +513,72 @@
         <div class="product-card-content">
           <p class="product-tag">Galpón de Jardín</p>
           <h3 class="product-card-title">Galpon de Jardin<br>de Madera</h3>
-          <p class="product-card-measures"><i class="fas fa-ruler-combined me-1" aria-hidden="true"></i> 2,60×1,30×1,85m / 1,30×1,30×1,85m</p>
           <p class="product-card-desc">Madera machimbre Taeda con aceite de lino. Estructura de hierro E-poxi. Resistente a la intemperie.</p>
           <span class="product-card-cta">Ver detalles <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
         </div>
       </article>
+      <!-- 4: Galpón con Interior de Madera — carrusel de 4 imágenes
+           Imágenes esperadas en /images/: galponinteriormadera.jpg, galponinteriormadera2.jpg,
+           galponinteriormadera3.jpg, galponinteriormadera4.jpg
+           Mientras no existan, se muestra un recuadro "Foto próximamente". -->
+      <article class="product-card reveal" data-category="galpon" data-product="galpon-interior-madera">
+        <div class="product-card-image">
+          <div class="card-carousel" data-carousel="galpon-interior-madera">
+            <div class="card-carousel-track">
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i></div>
+                <img src="/images/galponinteriormadera1.webp"
+                     alt="Galpón con Interior de Madera — imagen 1"
+                     width="600" height="400" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i></div>
+                <img src="/images/galponinteriormadera2.webp"
+                     alt="Galpón con Interior de Madera — imagen 2"
+                     width="600" height="400" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i></div>
+                <img src="/images/galponinteriormadera3.webp"
+                     alt="Galpón con Interior de Madera — imagen 3"
+                     width="600" height="400" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+              <div class="card-carousel-slide">
+                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i></div>
+                <img src="/images/galponinteriormadera4.webp"
+                     alt="Galpón con Interior de Madera — imagen 4"
+                     width="600" height="400" loading="lazy" decoding="async"
+                     onerror="this.style.display='none'" />
+              </div>
+            </div>
+            <button class="carousel-nav prev" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-nav next" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
+            <div class="carousel-dots">
+              <button class="carousel-dot active" aria-label="Imagen 1"></button>
+              <button class="carousel-dot" aria-label="Imagen 2"></button>
+              <button class="carousel-dot" aria-label="Imagen 3"></button>
+              <button class="carousel-dot" aria-label="Imagen 4"></button>
+            </div>
+            <div class="carousel-counter">1 / 4</div>
+          </div>
+          <img src="/images/galponinteriormadera.jpg" alt="Galpón con Interior de Madera — detalle"
+               class="prod-modal-img" style="display:none;" loading="lazy" />
+          <div class="product-card-overlay"></div>
+        </div>
+        <div class="product-card-content">
+          <p class="product-tag">Galpón de Jardín</p>
+          <h3 class="product-card-title">Galpón con<br>Interior de Madera</h3>
+          <p class="product-card-measures"><i class="fas fa-ruler-combined me-1" aria-hidden="true"></i> Medidas a convenir</p>
+          <p class="product-card-desc">Diseño de chapa con madera integrada para darle una estética interna. La madera está laqueada y pintada.</p>
+          <span class="product-card-cta">Ver detalles <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+        </div>
+      </article>
 
-      <!-- 4: Quincho Estructural — carrusel 3 modelos -->
-      <article class="product-card reveal" data-category="galpon" data-product="quincho-estructural">
+      <!-- 5: Quincho Estructural — carrusel 3 modelos -->
+      <article class="product-card reveal delay-1" data-category="galpon" data-product="quincho-estructural">
         <div class="product-card-image">
           <div class="card-carousel" data-carousel="quincho-estructural">
             <div class="card-carousel-track">
@@ -438,8 +623,8 @@
         </div>
       </article>
 
-      <!-- 5: Galpón Abierto — carrusel de colores -->
-      <article class="product-card reveal delay-1" data-category="galpon" data-product="galpon-abierto">
+      <!-- 6: Galpón Abierto — carrusel de colores -->
+      <article class="product-card reveal delay-2" data-category="galpon" data-product="galpon-abierto">
         <div class="product-card-image">
           <div class="card-carousel" data-carousel="galpon-abierto">
             <div class="card-carousel-track">
@@ -491,8 +676,8 @@
         </div>
       </article>
 
-      <!-- 6: Galpón Personalizado -->
-      <article class="product-card reveal delay-2" data-category="galpon" data-product="galpon-personalizado">
+      <!-- 7: Galpón Personalizado -->
+      <article class="product-card reveal" data-category="galpon" data-product="galpon-personalizado">
         <div class="product-card-image">
           <img src="/images/galponpersonalizado.jpg"
                alt="Galpón de Jardín Personalizado — diseño a medida en hierro, chapa y madera, Decoregue"
@@ -512,8 +697,8 @@
         </div>
       </article>
 
-      <!-- 7: Pérgola -->
-      <article class="product-card reveal" data-category="jardin" data-product="pergola">
+      <!-- 8: Pérgola -->
+      <article class="product-card reveal delay-1" data-category="jardin" data-product="pergola">
         <div class="product-card-image">
           <img src="/images/pergoladejardin.jpg"
                alt="Pérgola de Jardín — madera, hierro y chapa, fabricación artesanal Decoregue Bernal"
@@ -533,8 +718,8 @@
         </div>
       </article>
 
-      <!-- 8: Barra Móvil -->
-      <article class="product-card reveal delay-1" data-category="mueble" data-product="barra-movil">
+      <!-- 9: Barra Móvil -->
+      <article class="product-card reveal delay-2" data-category="mueble" data-product="barra-movil">
         <div class="product-card-image">
           <img src="/images/barramovil.jpg"
                alt="Barra Móvil en madera EUCA lacada e hierro E-poxi — ideal para jardines y asados, Decoregue"
@@ -553,8 +738,8 @@
         </div>
       </article>
 
-      <!-- 9: Mesa + Banquetas -->
-      <article class="product-card reveal delay-2" data-category="mueble" data-product="mesa-banquetas">
+      <!-- 10: Mesa + Banquetas -->
+      <article class="product-card reveal" data-category="mueble" data-product="mesa-banquetas">
         <div class="product-card-image">
           <img src="/images/mesaybanqueta.jpg"
                alt="Mesa Alta más 2 Banquetas en hierro y madera — kit completo para jardín, Decoregue Bernal"
@@ -883,6 +1068,7 @@
                 <option value="Galpón de Chapa Corrediza">Galpón de Chapa Corrediza</option>
                 <option value="Galpón de Jardín de Chapa">Galpón de Jardín de Chapa</option>
                 <option value="Galpón de Jardín de Madera">Galpón de Jardín de Madera</option>
+                <option value="Galpón con Interior de Madera">Galpón con Interior de Madera</option>
                 <option value="Quincho Estructural">Quincho Estructural</option>
                 <option value="Galpón Abierto">Galpón Abierto</option>
                 <option value="Galpón de Jardín Personalizado">Galpón de Jardín Personalizado</option>
@@ -952,6 +1138,7 @@
           <li><a href="#catalogo" class="footer-link">Galpón de Chapa Corrediza</a></li>
           <li><a href="#catalogo" class="footer-link">Galpón de Jardín de Chapa</a></li>
           <li><a href="#catalogo" class="footer-link">Galpón de Jardín de Madera</a></li>
+          <li><a href="#catalogo" class="footer-link">Galpón con Interior de Madera</a></li>
           <li><a href="#catalogo" class="footer-link">Quincho Estructural</a></li>
           <li><a href="#catalogo" class="footer-link">Galpón Abierto</a></li>
           <li><a href="#catalogo" class="footer-link">Galpón Personalizado</a></li>
@@ -986,6 +1173,8 @@
 
 <!-- ============================================
      PRODUCT MODAL
+     Vista 1 (#modalDetails): detalles del producto + botones Cotizar / Consultar
+     Vista 2 (#modalQuote): formulario de cotización (lo arma main.js)
      ============================================ -->
 <div class="modal-overlay" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal-box">
@@ -995,21 +1184,74 @@
     <div class="modal-grid">
       <div class="modal-image" id="modalImageWrap"></div>
       <div class="modal-content">
-        <div class="modal-tag" id="modalTag"></div>
-        <h2 class="modal-title" id="modalTitle"></h2>
-        <div class="modal-measures" id="modalMeasures"></div>
-        <p class="modal-desc" id="modalDesc"></p>
-        <div class="modal-materials" id="modalMaterials"></div>
-        <div class="modal-uses" id="modalUses"></div>
-        <div id="modalColors" style="margin-bottom:24px;"></div>
-        <a href="#" id="modalWaBtn" target="_blank" rel="noopener noreferrer" class="btn-whatsapp w-100">
-          <i class="fab fa-whatsapp" aria-hidden="true"></i>
-          <span>Consultar este producto</span>
-        </a>
+
+        <div id="modalDetails">
+          <div class="modal-tag" id="modalTag"></div>
+          <h2 class="modal-title" id="modalTitle"></h2>
+          <div class="modal-measures" id="modalMeasures"></div>
+          <p class="modal-desc" id="modalDesc"></p>
+          <div class="modal-materials" id="modalMaterials"></div>
+          <div class="modal-uses" id="modalUses"></div>
+          <div id="modalColors" style="margin-bottom:24px;"></div>
+          <div class="modal-actions">
+            <button type="button" id="modalQuoteBtn" class="btn-metal btn-metal-solid">
+              <span>Cotizar</span><i class="fas fa-clipboard-list" aria-hidden="true"></i>
+            </button>
+            <a href="#" id="modalWaBtn" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i>
+              <span>Consultar este producto</span>
+            </a>
+          </div>
+        </div>
+
+        <div id="modalQuote" hidden></div>
+
       </div>
     </div>
   </div>
 </div>
+
+
+<!-- ============================================
+     COTIZAR — botón flotante + panel (carrito)
+     ============================================ -->
+<button type="button" class="quote-fab" id="quoteFab" aria-label="Abrir mi cotización">
+  <i class="fas fa-clipboard-list" aria-hidden="true"></i>
+  <span>Cotizar</span>
+  <span class="quote-fab-count" id="quoteCount">0</span>
+</button>
+
+<div class="quote-overlay" id="quoteOverlay"></div>
+
+<aside class="quote-drawer" id="quoteDrawer" role="dialog" aria-modal="true"
+       aria-labelledby="quoteDrawerTitle" aria-hidden="true">
+  <div class="quote-drawer-head">
+    <h3 class="quote-drawer-title" id="quoteDrawerTitle">Tu <span>cotización</span></h3>
+    <button type="button" class="quote-close" id="quoteClose" aria-label="Cerrar cotización">
+      <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <div class="quote-drawer-body" id="quoteItems"></div>
+
+  <div class="quote-drawer-foot">
+    <div class="form-group">
+      <label for="quoteName" class="form-label">Tu nombre *</label>
+      <input type="text" id="quoteName" class="form-control-metal"
+             placeholder="¿Cómo te llamás?" autocomplete="given-name" />
+      <p class="quote-error" id="quoteError" hidden>Ingresá tu nombre para enviar la cotización.</p>
+    </div>
+    <div class="form-group">
+      <label for="quoteZone" class="form-label">Zona de entrega</label>
+      <input type="text" id="quoteZone" class="form-control-metal"
+             placeholder="Ej: Quilmes, CABA, La Plata..." autocomplete="address-level2" />
+    </div>
+    <button type="button" class="btn-whatsapp" id="quoteSend" disabled>
+      <i class="fab fa-whatsapp" aria-hidden="true"></i><span>Cotizar</span>
+    </button>
+    <button type="button" class="quote-clear" id="quoteClear">Vaciar cotización</button>
+  </div>
+</aside>
 
 <button id="backToTop" aria-label="Volver al inicio de la página">
   <i class="fas fa-arrow-up" aria-hidden="true"></i>
