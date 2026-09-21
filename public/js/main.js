@@ -175,87 +175,105 @@ const initCatalogFilter = () => {
 };
 
 /* ============================================
-   CARD CAROUSELS
+   CARRUSEL (reutilizable: cards + modal)
+   Recibe un elemento .card-carousel y le agrega
+   flechas, puntos, swipe y autoplay.
+   Devuelve { destroy } para limpiar el intervalo.
    ============================================ */
-const initCardCarousels = () => {
-  const carousels = document.querySelectorAll('.card-carousel');
+const setupCarousel = (carousel, { autoplay = true, interval = 4000 } = {}) => {
+  const track = carousel.querySelector('.card-carousel-track');
+  const slides = carousel.querySelectorAll('.card-carousel-slide');
+  const dots = carousel.querySelectorAll('.carousel-dot');
+  const prevBtn = carousel.querySelector('.carousel-nav.prev');
+  const nextBtn = carousel.querySelector('.carousel-nav.next');
+  const counter = carousel.querySelector('.carousel-counter');
 
-  carousels.forEach(carousel => {
-    const track = carousel.querySelector('.card-carousel-track');
-    const slides = carousel.querySelectorAll('.card-carousel-slide');
-    const dots = carousel.querySelectorAll('.carousel-dot');
-    const prevBtn = carousel.querySelector('.carousel-nav.prev');
-    const nextBtn = carousel.querySelector('.carousel-nav.next');
-    const counter = carousel.querySelector('.carousel-counter');
+  if (!track || slides.length <= 1) return null;
 
-    if (!track || slides.length <= 1) return;
+  let current = 0;
+  let timer = null;
+  const total = slides.length;
 
-    let current = 0;
-    const total = slides.length;
-
-    const goTo = (index) => {
-      // wrap around
-      current = ((index % total) + total) % total;
-      track.style.transform = `translateX(-${current * 100}%)`;
-
-      // update dots
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === current);
-      });
-
-      // update counter
-      if (counter) {
-        counter.textContent = `${current + 1} / ${total}`;
-      }
-    };
-
-    // Prevent card click when clicking nav buttons
-    const stopProp = (e) => e.stopPropagation();
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', (e) => {
-        stopProp(e);
-        goTo(current - 1);
-      });
-    }
-
-    if (nextBtn) {
-      nextBtn.addEventListener('click', (e) => {
-        stopProp(e);
-        goTo(current + 1);
-      });
-    }
+  const goTo = (index) => {
+    current = ((index % total) + total) % total; // wrap around
+    track.style.transform = `translateX(-${current * 100}%)`;
 
     dots.forEach((dot, i) => {
-      dot.addEventListener('click', (e) => {
-        stopProp(e);
-        goTo(i);
-      });
+      dot.classList.toggle('active', i === current);
     });
 
-    // Touch/swipe support
-    let touchStartX = 0;
-    let touchEndX = 0;
+    if (counter) {
+      counter.textContent = `${current + 1} / ${total}`;
+    }
+  };
 
-    carousel.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
+  const stopAuto = () => {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+  };
 
-    carousel.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      const diff = touchStartX - touchEndX;
-      if (Math.abs(diff) > 40) {
-        goTo(diff > 0 ? current + 1 : current - 1);
-      }
-    }, { passive: true });
+  const startAuto = () => {
+    if (!autoplay) return;
+    stopAuto();
+    timer = setInterval(() => goTo(current + 1), interval);
+  };
 
-    // Auto-advance (pause on hover)
-    let autoInterval = setInterval(() => goTo(current + 1), 4000);
+  // Empieza siempre en la primera imagen
+  goTo(0);
 
-    carousel.addEventListener('mouseenter', () => clearInterval(autoInterval));
-    carousel.addEventListener('mouseleave', () => {
-      autoInterval = setInterval(() => goTo(current + 1), 4000);
+  // Evita que el click en flechas/puntos abra el modal o cierre algo
+  const stopProp = (e) => e.stopPropagation();
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      stopProp(e);
+      goTo(current - 1);
     });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      stopProp(e);
+      goTo(current + 1);
+    });
+  }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', (e) => {
+      stopProp(e);
+      goTo(i);
+    });
+  });
+
+  // Swipe táctil
+  let touchStartX = 0;
+
+  carousel.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    stopAuto();
+  }, { passive: true });
+
+  carousel.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 40) {
+      goTo(diff > 0 ? current + 1 : current - 1);
+    }
+    startAuto();
+  }, { passive: true });
+
+  // Autoplay (se pausa con el mouse encima)
+  carousel.addEventListener('mouseenter', stopAuto);
+  carousel.addEventListener('mouseleave', startAuto);
+  startAuto();
+
+  return { destroy: stopAuto };
+};
+
+const initCardCarousels = () => {
+  document.querySelectorAll('.card-carousel').forEach(carousel => {
+    setupCarousel(carousel);
   });
 };
 
@@ -744,8 +762,17 @@ const initModal = (quote) => {
   const detailsView = document.getElementById('modalDetails');
   const quoteView = document.getElementById('modalQuote');
   const quoteBtn = document.getElementById('modalQuoteBtn');
+  const wrap = document.getElementById('modalImageWrap');
 
   let currentId = null;
+  let modalCarousel = null; // instancia del carrusel activo dentro del modal
+
+  const destroyModalCarousel = () => {
+    if (modalCarousel) {
+      modalCarousel.destroy();
+      modalCarousel = null;
+    }
+  };
 
   const showView = (view) => {
     detailsView.hidden = view !== 'details';
@@ -754,6 +781,7 @@ const initModal = (quote) => {
   };
 
   const closeModal = () => {
+    destroyModalCarousel(); // frena el autoplay
     overlay.classList.remove('open');
     document.body.style.overflow = '';
   };
@@ -779,8 +807,8 @@ const initModal = (quote) => {
     document.getElementById('modalDesc').textContent = data.desc;
     document.getElementById('modalMaterials').innerHTML = `<strong>Materiales</strong><p>${data.materials}</p>`;
 
-    // Imagen del modal — busca .prod-modal-img dentro de la card
-    const wrap = document.getElementById('modalImageWrap');
+    // ── Imagen / carrusel del modal ──
+    destroyModalCarousel();
     wrap.innerHTML = '';
 
     const renderPlaceholder = () => {
@@ -796,8 +824,17 @@ const initModal = (quote) => {
         </div>`;
     };
 
+    const cardCarousel = cardEl && cardEl.querySelector('.card-carousel');
     const modalImgEl = cardEl && cardEl.querySelector('.prod-modal-img');
-    if (modalImgEl) {
+
+    if (cardCarousel) {
+      // Clonamos el carrusel completo y le activamos la misma lógica (autoplay, flechas, swipe)
+      const clone = cardCarousel.cloneNode(true);
+      clone.removeAttribute('data-carousel');
+      clone.classList.add('modal-carousel');
+      wrap.appendChild(clone);
+      modalCarousel = setupCarousel(clone);
+    } else if (modalImgEl) {
       const clone = modalImgEl.cloneNode(true);
       clone.style.display  = 'block';
       clone.style.width    = '100%';
@@ -867,7 +904,7 @@ const initModal = (quote) => {
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
   });
 };
 
