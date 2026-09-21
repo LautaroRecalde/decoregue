@@ -352,105 +352,155 @@
         </div>
       </article>
 
-   <!-- 2: Galpón Chapa — MÁS VENDIDO — carrusel de 10 imágenes
-           Imágenes esperadas en /images/: galponchapa.png (la actual) y galponchapa2.jpg ... galponchapa10.jpg
-           Mientras no existan, se muestra un recuadro "Foto próximamente". -->
-      <article class="product-card reveal delay-1" data-category="galpon" data-product="galpon-chapa">
-        <div class="product-card-image">
-          <div class="card-carousel" data-carousel="galpon-chapa">
-            <div class="card-carousel-track">
-              <div class="card-carousel-slide">
-                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
-                <img src="/images/galponchapa.png"
-                     alt="Galpón de Jardín de Chapa — imagen 1"
-                     width="600" height="400" loading="eager" fetchpriority="low" decoding="async"
-                     onerror="this.style.display='none'" />
-              </div>
-              <div class="card-carousel-slide">
-                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
-                <img src="/images/galponchapa3.webp"
-                     alt="Galpón de Jardín de Chapa — imagen 2"
-                     width="600" height="400" loading="lazy" decoding="async"
-                     onerror="this.style.display='none'" />
-              </div>
-              <div class="card-carousel-slide">
-                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
-                <img src="/images/galponchapa4.webp"
-                     alt="Galpón de Jardín de Chapa — imagen 3"
-                     width="600" height="400" loading="lazy" decoding="async"
-                     onerror="this.style.display='none'" />
-              </div>
-              <div class="card-carousel-slide">
-                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
-                <img src="/images/galponchapa5.webp"
-                     alt="Galpón de Jardín de Chapa — imagen 4"
-                     width="600" height="400" loading="lazy" decoding="async"
-                     onerror="this.style.display='none'" />
-              </div>
-              <div class="card-carousel-slide">
-                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
-                <img src="/images/galponchapa6.webp"
-                     alt="Galpón de Jardín de Chapa — imagen 5"
-                     width="600" height="400" loading="lazy" decoding="async"
-                     onerror="this.style.display='none'" />
-              </div>
-              <div class="card-carousel-slide">
-                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
-                <img src="/images/galponchapa7.webp"
-                     alt="Galpón de Jardín de Chapa — imagen 6"
-                     width="600" height="400" loading="lazy" decoding="async"
-                     onerror="this.style.display='none'" />
-              </div>
-              <div class="card-carousel-slide">
-                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
-                <img src="/images/galponchapa8.webp"
-                     alt="Galpón de Jardín de Chapa — imagen 7"
-                     width="600" height="400" loading="lazy" decoding="async"
-                     onerror="this.style.display='none'" />
-              </div>
-              <div class="card-carousel-slide">
-                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
-                <img src="/images/galponchapa9.webp"
-                     alt="Galpón de Jardín de Chapa — imagen 8"
-                     width="600" height="400" loading="lazy" decoding="async"
-                     onerror="this.style.display='none'" />
-              </div>
-              <div class="card-carousel-slide">
-                <div class="slide-placeholder" aria-hidden="true"><i class="fas fa-image"></i><span>Foto próximamente</span></div>
-                <img src="/images/galponchapa10.webp"
-                     alt="Galpón de Jardín de Chapa — imagen 9"
-                     width="600" height="400" loading="lazy" decoding="async"
-                     onerror="this.style.display='none'" />
-              </div>
-            </div>
-            <button class="carousel-nav prev" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
-            <button class="carousel-nav next" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
-            <div class="carousel-dots">
-              <button class="carousel-dot active" aria-label="Imagen 1"></button>
-              <button class="carousel-dot" aria-label="Imagen 2"></button>
-              <button class="carousel-dot" aria-label="Imagen 3"></button>
-              <button class="carousel-dot" aria-label="Imagen 4"></button>
-              <button class="carousel-dot" aria-label="Imagen 5"></button>
-              <button class="carousel-dot" aria-label="Imagen 6"></button>
-              <button class="carousel-dot" aria-label="Imagen 7"></button>
-              <button class="carousel-dot" aria-label="Imagen 8"></button>
-              <button class="carousel-dot" aria-label="Imagen 9"></button>
-              <button class="carousel-dot" aria-label="Imagen 10"></button>
-            </div>
-            <div class="carousel-counter">1 / 10</div>
+   <!-- 2: Galpón Chapa — MÁS VENDIDO — carrusel de 8 imágenes
+     Imágenes esperadas en /images/: galponchapa.png y galponchapa3.webp ... galponchapa10.webp
+     Mientras no existan, se muestra un recuadro "Foto próximamente". -->
+
+<article class="product-card reveal delay-1" data-category="galpon" data-product="galpon-chapa">
+  <div class="product-card-image">
+
+    <div class="card-carousel" data-carousel="galpon-chapa">
+      <div class="card-carousel-track">
+
+        <div class="card-carousel-slide">
+          <div class="slide-placeholder" aria-hidden="true">
+            <i class="fas fa-image"></i>
+            <span>Foto próximamente</span>
           </div>
-          <img src="/images/galponchapa.png" alt="Galpón de Jardín de Chapa — detalle interior"
-               class="prod-modal-img" style="display:none;" loading="lazy" />
-          <div class="product-card-overlay"></div>
-          <div class="product-badge-custom">Más vendido</div>
+          <img src="/images/galponchapa.png"
+               alt="Galpón de Jardín de Chapa — imagen 1"
+               width="600" height="400" loading="eager" fetchpriority="low" decoding="async"
+               onerror="this.style.display='none'" />
         </div>
-        <div class="product-card-content">
-          <p class="product-tag">Galpón de Jardín</p>
-          <h3 class="product-card-title">Galpon de Jardin<br>de Chapa</h3>
-          <p class="product-card-desc">Estructura de hierro E-poxi, chapa estructural, puerta con cerrojo. Fácil de armar y desmontar.</p>
-          <span class="product-card-cta">Ver detalles <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+
+        <div class="card-carousel-slide">
+          <div class="slide-placeholder" aria-hidden="true">
+            <i class="fas fa-image"></i>
+            <span>Foto próximamente</span>
+          </div>
+          <img src="/images/galponchapa3.webp"
+               alt="Galpón de Jardín de Chapa — imagen 2"
+               width="600" height="400" loading="lazy" decoding="async"
+               onerror="this.style.display='none'" />
         </div>
-      </article>
+
+        <div class="card-carousel-slide">
+          <div class="slide-placeholder" aria-hidden="true">
+            <i class="fas fa-image"></i>
+            <span>Foto próximamente</span>
+          </div>
+          <img src="/images/galponchapa5.webp"
+               alt="Galpón de Jardín de Chapa — imagen 3"
+               width="600" height="400" loading="lazy" decoding="async"
+               onerror="this.style.display='none'" />
+        </div>
+
+        <div class="card-carousel-slide">
+          <div class="slide-placeholder" aria-hidden="true">
+            <i class="fas fa-image"></i>
+            <span>Foto próximamente</span>
+          </div>
+          <img src="/images/galponchapa6.webp"
+               alt="Galpón de Jardín de Chapa — imagen 4"
+               width="600" height="400" loading="lazy" decoding="async"
+               onerror="this.style.display='none'" />
+        </div>
+
+        <div class="card-carousel-slide">
+          <div class="slide-placeholder" aria-hidden="true">
+            <i class="fas fa-image"></i>
+            <span>Foto próximamente</span>
+          </div>
+          <img src="/images/galponchapa7.webp"
+               alt="Galpón de Jardín de Chapa — imagen 5"
+               width="600" height="400" loading="lazy" decoding="async"
+               onerror="this.style.display='none'" />
+        </div>
+
+        <div class="card-carousel-slide">
+          <div class="slide-placeholder" aria-hidden="true">
+            <i class="fas fa-image"></i>
+            <span>Foto próximamente</span>
+          </div>
+          <img src="/images/galponchapa8.webp"
+               alt="Galpón de Jardín de Chapa — imagen 6"
+               width="600" height="400" loading="lazy" decoding="async"
+               onerror="this.style.display='none'" />
+        </div>
+
+        <div class="card-carousel-slide">
+          <div class="slide-placeholder" aria-hidden="true">
+            <i class="fas fa-image"></i>
+            <span>Foto próximamente</span>
+          </div>
+          <img src="/images/galponchapa9.webp"
+               alt="Galpón de Jardín de Chapa — imagen 7"
+               width="600" height="400" loading="lazy" decoding="async"
+               onerror="this.style.display='none'" />
+        </div>
+
+        <div class="card-carousel-slide">
+          <div class="slide-placeholder" aria-hidden="true">
+            <i class="fas fa-image"></i>
+            <span>Foto próximamente</span>
+          </div>
+          <img src="/images/galponchapa10.webp"
+               alt="Galpón de Jardín de Chapa — imagen 8"
+               width="600" height="400" loading="lazy" decoding="async"
+               onerror="this.style.display='none'" />
+        </div>
+
+      </div>
+
+      <button class="carousel-nav prev" aria-label="Imagen anterior">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <button class="carousel-nav next" aria-label="Imagen siguiente">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+
+      <div class="carousel-dots">
+        <button class="carousel-dot active" aria-label="Imagen 1"></button>
+        <button class="carousel-dot" aria-label="Imagen 2"></button>
+        <button class="carousel-dot" aria-label="Imagen 3"></button>
+        <button class="carousel-dot" aria-label="Imagen 4"></button>
+        <button class="carousel-dot" aria-label="Imagen 5"></button>
+        <button class="carousel-dot" aria-label="Imagen 6"></button>
+        <button class="carousel-dot" aria-label="Imagen 7"></button>
+        <button class="carousel-dot" aria-label="Imagen 8"></button>
+      </div>
+
+      <div class="carousel-counter">1 / 8</div>
+    </div>
+
+    <img src="/images/galponchapa.png"
+         alt="Galpón de Jardín de Chapa — detalle interior"
+         class="prod-modal-img"
+         style="display:none;"
+         loading="lazy" />
+
+    <div class="product-card-overlay"></div>
+
+    <div class="product-badge-custom">Más vendido</div>
+  </div>
+
+  <div class="product-card-content">
+    <p class="product-tag">Galpón de Jardín</p>
+
+    <h3 class="product-card-title">
+      Galpon de Jardin<br>de Chapa
+    </h3>
+
+    <p class="product-card-desc">
+      Estructura de hierro E-poxi, chapa estructural, puerta con cerrojo. Fácil de armar y desmontar.
+    </p>
+
+    <span class="product-card-cta">
+      Ver detalles <i class="fas fa-arrow-right" aria-hidden="true"></i>
+    </span>
+  </div>
+</article>
 
   <!-- 3: Galpón Madera — carrusel de 4 imágenes -->
 <article class="product-card reveal delay-2" data-category="galpon" data-product="galpon-madera">
